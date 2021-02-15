@@ -15,3 +15,10 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
+
+audience:
+  aud: xingdaba-services
+  # xingdaba-management-token
+  base64Secret: eGluZ2RhYmEtbWFuYWdlbWVudC10b2tlbg==
+  iss: xingdaba-system
+  expiresSecond: 172800
