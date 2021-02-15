@@ -2,6 +2,7 @@ package com.jn.xingdaba.system.infrastructure.handler;
 
 import com.jn.core.api.ServerResponse;
 import com.jn.core.exception.JNException;
+import com.jn.xingdaba.system.infrastructure.exception.AccountException;
 import com.jn.xingdaba.system.infrastructure.exception.JwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -18,10 +19,11 @@ public class ManagementExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler({
-            JwtException.class
+            JwtException.class,
+            AccountException.class
     })
     public ServerResponse<Void> handleLogicError(JNException exception) {
-        log.error("universal logic error", exception);
+        log.error("management system logic error", exception);
         return ServerResponse.error(exception.getJNError());
     }
 

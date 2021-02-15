@@ -26,7 +26,7 @@ public class JwtTokenCreator {
     /**
      * 解析jwt
      */
-    public static Claims parseJWT(String jsonWebToken, String base64Security) {
+    public Claims parseJWT(String jsonWebToken, String base64Security) {
         try {
             Claims claims = Jwts.parser()
                     .setSigningKey(DatatypeConverter.parseBase64Binary(base64Security))
@@ -44,7 +44,7 @@ public class JwtTokenCreator {
     /**
      * 构建jwt
      */
-    public static String createJWT(String userId, String username, String role, JwtAudienceConfig audience) {
+    public String createJWT(String userId, String username, String role, JwtAudienceConfig audience) {
         try {
             // 使用HS256加密算法
             SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
@@ -86,14 +86,14 @@ public class JwtTokenCreator {
     /**
      * 从token中获取用户名
      */
-    public static String getUsername(String token, String base64Security) {
+    public String getUsername(String token, String base64Security) {
         return parseJWT(token, base64Security).getSubject();
     }
 
     /**
      * 从token中获取用户ID
      */
-    public static String getUserId(String token, String base64Security) throws UnsupportedEncodingException {
+    public String getUserId(String token, String base64Security) throws UnsupportedEncodingException {
         String userId = parseJWT(token, base64Security).get("userId", String.class);
         return new String(Base64.getDecoder().decode(userId), "UTF-8");
     }
@@ -101,7 +101,7 @@ public class JwtTokenCreator {
     /**
      * 是否已过期
      */
-    public static boolean isExpiration(String token, String base64Security) {
+    public boolean isExpiration(String token, String base64Security) {
         return parseJWT(token, base64Security).getExpiration().before(new Date());
     }
 }
