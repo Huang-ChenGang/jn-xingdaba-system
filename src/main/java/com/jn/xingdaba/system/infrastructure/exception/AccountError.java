@@ -2,7 +2,7 @@ package com.jn.xingdaba.system.infrastructure.exception;
 
 public enum AccountError implements ManagementError {
 
-    LOGIN_ERROR(1530, "用户名或密码错误")
+    LOGIN_ERROR(1210, "用户名或密码错误")
     ;
 
     private final int errorCode;

@@ -37,7 +37,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    implementation 'com.jn:jn-core-common:2021.1.0-SNAPSHOT'
+    implementation 'com.jn:jn-core-common:2021.2.0-SNAPSHOT'
 
     // jwt temporary
     implementation 'io.jsonwebtoken:jjwt:0.9.1'

@@ -1,16 +1,14 @@
 package com.jn.xingdaba.system.infrastructure.exception;
 
-public enum JwtError implements ManagementError {
-
-    PARSE_JWT_ERROR(1100, "解析JWT异常"),
-    TOKEN_EXPIRED(1110, "Token过期"),
-    CREATE_JWT_ERROR(1120, "创建JWT异常")
+public enum  ManagementSystemError implements ManagementError {
+    BAD_REQUEST(400, "请求参数错误"),
+    MANAGEMENT_SYSTEM_ERROR(500, "后台管理服务系统异常")
     ;
 
     private final int errorCode;
     private final String errorMessage;
 
-    JwtError(int errorCode, String errorMessage) {
+    ManagementSystemError(int errorCode, String errorMessage) {
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
     }

@@ -11,11 +11,22 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import static com.jn.xingdaba.system.infrastructure.exception.JwtError.MANAGEMENT_SYSTEM_ERROR;
+import javax.validation.ConstraintViolationException;
+
+import static com.jn.xingdaba.system.infrastructure.exception.ManagementSystemError.BAD_REQUEST;
+import static com.jn.xingdaba.system.infrastructure.exception.ManagementSystemError.MANAGEMENT_SYSTEM_ERROR;
 
 @Slf4j
 @RestControllerAdvice
 public class ManagementExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler({
+            ConstraintViolationException.class
+    })
+    public ServerResponse<Void> handleViolationException(ConstraintViolationException exception) {
+        return ServerResponse.error(BAD_REQUEST, exception.getMessage());
+    }
 
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler({
