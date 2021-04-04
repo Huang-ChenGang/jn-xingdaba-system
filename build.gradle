@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.jn'
-version = '2021.1.0-SNAPSHOT'
+version = '2021.4.0-SNAPSHOT'
 sourceCompatibility = '11'
 
 ext {
@@ -15,7 +15,7 @@ ext {
 repositories {
     mavenLocal()
     maven {
-        url "http://118.25.184.76:8081/nexus/content/groups/oobusGroup/"
+        url "http://81.68.181.53:8081/repository/jn-group/"
         credentials {
             username NexusUser
             password NexusPwd
@@ -37,7 +37,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    implementation 'com.jn:jn-core-common:2021.2.0-SNAPSHOT'
+    implementation 'com.jn:jn-core-common:2021.4.0-SNAPSHOT'
 
     // jwt temporary
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
